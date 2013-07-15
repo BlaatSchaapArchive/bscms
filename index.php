@@ -10,6 +10,7 @@
 
   $request = explode ('/',$_SERVER['REQUEST_URI']);
   //echo "<pre>"; print_r($request); echo "</pre>"; 
+
   $command = $request[1];
 
   //------------------------------------------------------------------
