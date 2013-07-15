@@ -1,7 +1,7 @@
 <?php
 
 
-$plugin = array ( "dir" => $current_plugin , "content" => "",  "filename" => "content.php", "function" => "page_GetContentPage" ) ;
+$plugin = array ( "dir" => $current_plugin , "content" => "page",  "filename" => "page.php", "function" => "page_GetContentPage" ) ;
 array_push ($plugins, $plugin);
 
 
