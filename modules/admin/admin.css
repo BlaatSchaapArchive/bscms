@@ -1,0 +1,48 @@
+#content { 
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
+#adminmenu {
+  width : 200px;
+  background-color: #CCFFCC;
+  height: 100%;
+  float:left;
+}
+
+#admincontent {
+  height: 100%;
+  background-color: #FFFFCC;
+}
+
+
+html, body {height: 100%; width: 100%;}
+
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+
+
+.level1 {
+/*
+  margin-left  : 5px;
+  margin-right : 5px;
+  margin-top   : 5px;
+*/
+  margin: 5px;
+  border:1px dotted black;
+}
+
+.level2 {
+  margin-left: 10px;
+  border:1px dotted black;
+}
+
+.level3 {
+  margin-left: 15px;
+}
