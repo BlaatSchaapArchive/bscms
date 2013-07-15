@@ -3,10 +3,21 @@
 // note: should be converted to xslt or so, but for now....
 // http://stackoverflow.com/questions/4531671/change-html-content-with-php-xpath-and-or-dom
 
+
+
 $menu =  array();
 $adminmenu = "";
 foreach ($adminpages as $adminpage) {
-  $menu[$adminpage['category']][$adminpage['name']][]= array ("item"=> $adminpage['item'],"filename"=> $adminpage['filename']);
+  if (!$adminpage['hidden']) $menu[$adminpage['category']][$adminpage['name']][]= array ("item"=> $adminpage['item'],"filename"=> $adminpage['filename']);
+
+  if ($adminpage['category']==$request[2]) {
+    if($adminpage['name']==$request[3]) {
+      if($adminpage['item']==$request[4]) {
+        require_once($adminpage['dir'] . $adminpage['filename']);
+        $admincontent = call_user_func($adminpage['function']);
+      }
+    }
+  }
 }
 
 
@@ -37,6 +48,8 @@ function generate_menu_l1($l1,$l1name) {
 array_walk($menu, "generate_menu_l1");
 
 
+
+
 ?>
 <html>
   <head>
@@ -58,9 +71,26 @@ array_walk($menu, "generate_menu_l1");
       <div id=adminmenu> 
         <?php echo $adminmenu; ?>
       </div>
-      <div id=admincontent>
-        <?php echo $admincontent; ?>
+
+      <div id=adminwidgets>
+        <?php
+          foreach ( $xmlroot->AdminWidget as $AdminWidget) {
+            echo "<div class=adminwidget><div class=adminwidgettitle>".
+                  $adminWidget->title ."</div><div class=adminwidgetcontent>".                    $adminWidget->content."</div></div>";
+          }
+        ?>
       </div>
+
+      <div id=admincontent>
+        <?php 
+          //echo $admincontent; 
+          $adminpagetitle = "adminpagetitle/" .$request[1]. "/" .$request[2]. "/" . $request[3]. "/" .$request[4];
+          echo "<div id='adminpagetitle'>$adminpagetitle</div>";
+          foreach ( $xmlroot->htmlAdminContent as $htmlContent) {
+            echo $htmlContent;
+          }
+        ?>
+        </div>
     </div>
   </body>
 </html>

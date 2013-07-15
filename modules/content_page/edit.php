@@ -9,7 +9,7 @@
   }
 
 // TODO: mode to variable!!!
-  $xmlroot->addChild("htmlContent",
+  $xmlroot->addChild("htmlAdminContent",
      "<script type='text/javascript' src='/3rdparty/tinymce/tinymce.min.js'></script>
       <script type='text/javascript'>
         tinymce.init({ selector: 'textarea'  });

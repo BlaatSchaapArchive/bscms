@@ -8,7 +8,7 @@ array_push ($plugins, $plugin);
 $adminpage = array ( "dir"      => $current_plugin , 
                      "category" => "content"       ,
                      "name"     => "page"     , 
-                     "item"     => "allpages" , 
+                     "item"     => "list" , 
                      "filename" => "admin.php"     ,
                      "function" => "page_AdminGetAllPages");
 
@@ -17,9 +17,20 @@ array_push($adminpages, $adminpage);
 $adminpage = array ( "dir"      => $current_plugin ,
                      "category" => "content"       , 
                      "name"     => "page"     , 
-                     "item"     => "addpage"  , 
+                     "item"     => "add"  , 
                      "filename" => "admin.php"     ,
                      "function" => "page_AdminAddPage");
+
+array_push($adminpages, $adminpage);
+
+
+$adminpage = array ( "dir"      => $current_plugin ,
+                     "category" => "content"       ,
+                     "name"     => "page"     ,
+                     "item"     => "edit"  ,
+                     "filename" => "admin.php"     ,
+                     "function" => "page_AdminEditPage",
+                     "hidden"   => true              );
 
 array_push($adminpages, $adminpage);
 
