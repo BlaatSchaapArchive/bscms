@@ -6,7 +6,7 @@
     ?>
     <meta charset="utf-8">
     <?php 
-      echo "<title>$title</title>";
+      echo "<title>$xmlroot->title</title>";
       foreach ($htmlheaders as $htmlheader) echo $htmlheader;
     ?>
   </head>
@@ -16,7 +16,7 @@
         echo $htmlContent;
       }
       ?>
-
+    <div id="title"><?php echo $xmlroot->title;?></div>
     <div id="content">
       <?php
       foreach ( $xmlroot->htmlContent as $htmlContent) {

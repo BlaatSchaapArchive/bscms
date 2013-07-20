@@ -5,7 +5,37 @@
 
 function page_AdminGetAllPages(){
   global $xmlroot;
-  $xmlroot->addChild("htmlAdminContent", "AllPages");
+  global $pdo;
+  $pq = $pdo->prepare('select contentid,shortname,title, authorid, status,timestamp, max(revision) as revision, displayname
+                       from content join content_page on content.id=content_page.contentid
+                                    join user on user.id=content.authorid
+                       where type="page"
+                       group by contentid
+');
+  $pq->execute();
+  $r = $pq->fetchAll();
+
+  $xmlroot->addChild("htmlAdminContent", "<table>
+<tr>
+  <td>ID</td>
+  <td>Shortname</rd>
+  <td>Title</td>
+  <td>Author</td>
+  <td>Time</td>
+  <td>Revision</td><td></td></tr>");
+
+  foreach ($r as $page) {
+    $xmlroot->addChild("htmlAdminContent",
+"<tr>
+   <td>".$page['contentid']."</td>
+   <td>".$page['shortname']."</td>
+   <td>".$page['title']."</td>
+   <td>".$page['displayname']."</td>
+   <td>".$page['timestamp']."</td>
+   <td>".$page['revision']."</td>
+   <td><a href='/admin/content/page/edit/".$page['contentid']."'>Edit</a></tr>");
+  }
+  $xmlroot->addChild("htmlAdminContent","</table>");
 }
 
   function page_SavePage($contentId,$content,$raw) {
@@ -38,7 +68,7 @@ function page_AdminGetAllPages(){
   function page_AdminAddPage(){
     global $xmlroot;
     $xmlroot->addChild("htmlAdminContent", "AddPage");
-    page_EditForm("Facny Long Title", "shorttitle", "<b>Hello</b>&nbsp;<i>World</i>","addpage");
+    page_EditForm("", "", "");
  
     if (isset($_POST['addpage'])) {
       $contentId = content_NewContent($_POST['shortname'], $_POST['title'], $_SESSION['userid'], "page");
@@ -79,10 +109,12 @@ function page_EditForm($title, $shortname, $content, $mode){
       </script>
       <div class='editform'>
         <form method='post'>
-          <input name='title' value='$title'/>
-          <input name='shortname' value='$shortname'/>
-          <textarea name='text'>$content</textarea>
-          <input type=submit name=$mode>
+          <table><tr>
+            <td>Title</td><td><input name='title' value='$title'/></td></tr>
+            <td>Shortname</td><td><input name='shortname' value='$shortname'/></td></tr>
+            <tr><td colspan=2><textarea name='text'>$content</textarea></td></tr>
+            <tr><td></td><td><input type=submit value='Save' name=$mode></td></tr>
+          </table>
         </form>
       </div>");
 }

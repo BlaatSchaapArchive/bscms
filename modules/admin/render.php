@@ -67,7 +67,7 @@ array_walk($menu, "generate_menu_l1");
       }
       ?>
 
-    <div id=content>
+    <div id=admin>
       <div id=adminmenu> 
         <?php echo $adminmenu; ?>
       </div>

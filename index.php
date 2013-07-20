@@ -77,7 +77,18 @@
   //------------------------------------------------------------------
   // Render                     
   //------------------------------------------------------------------
-if (!(isset($render))) $render="freeform";
+
+  if (!(isset($render))) {
+    //$render="freeform";
+    $pq = $pdo->prepare("select value from options where name=:name");
+    $pq->execute(array(":name" => "render_default"));
+    $r = $pq->fetchAll();
+    $render= $r[0]['value'];
+  }
+  
+  if (!(isset($render))) {
+    die ("Configuration Error: Renderer is not set!");
+  }
 
   foreach ($renderers as $renderer) {
     if ($render == $renderer['name']) {

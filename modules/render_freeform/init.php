@@ -13,6 +13,9 @@ $adminpage = array ( "dir"      => $current_plugin ,
 
 array_push($adminpages, $adminpage);
 
+$module_render_freeform_directory=$current_plugin;
 
+$css = array ( "dir" => $current_plugin , "name"=> "freeform" ,"filename" => "css.php") ;
+array_push($csss,$css);
 
 ?>
