@@ -8,6 +8,7 @@
 $menu =  array();
 $adminmenu = "";
 foreach ($adminpages as $adminpage) {
+  if (!(isset($adminpage['hidden']))) $adminpage['hidden'] = false;
   if (!$adminpage['hidden']) $menu[$adminpage['category']][$adminpage['name']][]= array ("item"=> $adminpage['item'],"filename"=> $adminpage['filename']);
 
   if ($adminpage['category']==$request[2]) {

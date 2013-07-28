@@ -1,4 +1,5 @@
 <?php
+  ssl_force();
   require_once("3rdparty/pbkdf2/pbkdf2.php");
 
   $loginform = "

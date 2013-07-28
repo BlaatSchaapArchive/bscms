@@ -55,6 +55,8 @@ body {
 .level2 {
   margin-left: 10px;
   border:1px dotted black;
+  border-right-style:none;
+  border-bottom-style:none;
 }
 
 .level3 {

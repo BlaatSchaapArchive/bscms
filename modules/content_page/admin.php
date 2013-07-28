@@ -111,7 +111,7 @@ function page_EditForm($title, $shortname, $content, $mode){
         <form method='post'>
           <table><tr>
             <td>Title</td><td><input name='title' value='$title'/></td></tr>
-            <td>Shortname</td><td><input name='shortname' value='$shortname'/></td></tr>
+            <td>Shortname</td><td>http://". $_SERVER['HTTP_HOST'] ."/<input name='shortname' value='$shortname'/></td></tr>
             <tr><td colspan=2><textarea name='text'>$content</textarea></td></tr>
             <tr><td></td><td><input type=submit value='Save' name=$mode></td></tr>
           </table>

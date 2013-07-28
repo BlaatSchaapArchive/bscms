@@ -13,6 +13,22 @@ $adminpage = array ( "dir"      => $current_plugin ,
 
 array_push($adminpages, $adminpage);
 
+$adminpage = array ( "dir"      => $current_plugin ,
+                     "category" => "render"       ,
+                     "name"     => "freeform",
+                     "item"     => "edit" ,
+                     "filename" => "admin.php"     ,
+                     "function" => "freeform_AdminEditTheme",
+                     "hidden"   => true);
+
+array_push($adminpages, $adminpage);
+
+
+
+
+
+
+
 $module_render_freeform_directory=$current_plugin;
 
 $css = array ( "dir" => $current_plugin , "name"=> "freeform" ,"filename" => "css.php") ;
