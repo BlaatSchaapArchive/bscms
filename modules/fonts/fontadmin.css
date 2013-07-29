@@ -1,0 +1,46 @@
+.fontname {
+  display: inline-block;
+  width: 150px;
+  height: 25px;
+}
+
+.fontinstall {
+  display: inline-block;
+  width: 150px;
+  height: 25px;
+
+}
+
+.fontpreview {
+  display: block;
+  margin: 5px;
+  padding: 5px;
+  border:1px dotted black;  
+}
+
+
+/*
+.fontitem {
+  float:left;
+  display:block;
+  width: 125px;
+  height: 20px;
+  overflow: hidden;
+  white-space:nowrap;
+  margin-left: 5px;
+  padding: 5px;
+  color: black;
+  
+}
+
+.fontitem:hover {
+  background-color: #FFCCCC;
+}
+
+.fontitem:link {text-decoration:none;} 
+.fontitem:visited {text-decoration:none;}
+.fontitem:hover {text-decoration:underline;}
+.fontitem:active {text-decoration:underline;}
+*/
+
+

@@ -7,26 +7,16 @@ function freeform_AdminGetClasses(){
   global $request;
   try {
     $xmlroot->addChild("htmlAdminContent","--classes--");
+    if (true) {
+      $pq = $pdo->prepare("select * from render_freeform_classes where themeid = :themeid");
+    }
+
   } catch (PDOException $e) {
     global $xmlroot;
     $error = $e->getMessage ();
     $xmlroot->addChild("htmlAdminContent", "<div class='error'>DB ERROR: $error</div>");
   }
   
-}
-
-function freeform_AdminGetFonts(){
-  global $xmlroot;
-  global $pdo;
-  global $request;
-  try {
-    $xmlroot->addChild("htmlAdminContent","--fonts--");
-  } catch (PDOException $e) {
-    global $xmlroot;
-    $error = $e->getMessage ();
-    $xmlroot->addChild("htmlAdminContent", "<div class='error'>DB ERROR: $error</div>");
-  }
-
 }
 
 function freeform_AdminGetAllThemes() {
