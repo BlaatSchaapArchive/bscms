@@ -1,4 +1,9 @@
 <?php
+
+$plugin = array ( "dir" => $current_plugin , "command" => "font", "filename" => "font.php", "type" => "render" ) ;
+array_push ($plugins, $plugin);
+
+
 $adminpage = array ( "dir"      => $current_plugin ,
                      "category" => "render"       ,
                      "name"     => "fonts",

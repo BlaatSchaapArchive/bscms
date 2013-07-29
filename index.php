@@ -1,15 +1,11 @@
-<?php
+<?php 
   session_start();  //start session
 //  ob_start();       //start output buffering
-
   require_once("config/db.php");
   require_once("3rdparty/mobile_detection/detect.php");
-
   define ("BSCMS_VERSION", "0.0.1");
-  //if (isset($_GET['command'])) $command = $_GET['command']; else $command = false;
 
   $request = explode ('/',$_SERVER['REQUEST_URI']);
-  //echo "<pre>"; print_r($request); echo "</pre>"; 
 
   $command = $request[1];
 
@@ -48,7 +44,6 @@
        closedir($dh);
        }
      }
-
   //------------------------------------------------------------------
   // Pre-Process
   //------------------------------------------------------------------
@@ -79,11 +74,10 @@
     $xmlroot->addChild("htmlContent","404 NOT FOUND");
     header("404 NOT FOUND");
   }
-  
+  header("koe: boe"); 
   //------------------------------------------------------------------
   // Render                     
   //------------------------------------------------------------------
-
   if (!(isset($render))) {
     //$render="freeform";
     $pq = $pdo->prepare("select value from options where name=:name");
@@ -102,6 +96,6 @@
       break;
     }
   }
-
+  header("schaap: be");
 ?>
 

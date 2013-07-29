@@ -15,6 +15,7 @@ function fonts_GetGoogleFonts() {
     if (strlen($key)) {
       $url = "https://www.googleapis.com/webfonts/v1/webfonts?key=$key";
       $data = GetDataFromURL($url);
+      $data = str_replace("http://","https://",$data); //enforce https
       return json_decode($data,true);
     } else {
       $xmlroot->addChild("htmlAdminContent","<p>The Google API key is not set. Please visit <a href='https://code.google.com/apis/console/' target='_blank'>https://code.google.com/apis/console/</a> to obtain an API key.</p>");

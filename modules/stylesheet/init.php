@@ -4,4 +4,3 @@ $plugin = array ( "dir" => $current_plugin , "command" => "stylesheet",  "filena
 array_push ($plugins, $plugin);
 
 ?>
-

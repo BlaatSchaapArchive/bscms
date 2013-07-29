@@ -11,11 +11,14 @@ function fonts_AdminGetFonts(){
     $fontId = $font['id'];
     $type   = $font['type'];
     $family = $font['family'];
-    $url = "/modules/fonts/data/$fontId.$type";
+    //$url = "/modules/fonts/data/$fontId.$type";
+    $url = "/font/$fontId";
     $style = "@font-face { font-family : '$family'; src: url($url); }";
     $quote = "The quick brown fox jumps over the lazy dog.";
+    $xmlroot->addChild("htmlAdminContent","<div class='fontpreview'>");
     $xmlroot->addChild("htmlAdminContent","<style>$style</style><div class='fontname'> $family </div>");
     $xmlroot->addChild("htmlAdminContent","<div style='font-size:24px; font-family: \"$family\"'>$quote</div>"); 
+    $xmlroot->addChild("htmlAdminContent","</div>");
   }
 
 }
@@ -56,7 +59,8 @@ function fonts_AdminGetGoogleFonts(){
        $pq->execute(array(":family"=>$font['family'], ":type"=>$type));
        $fontId = $pdo->lastInsertId();
        $data = GetDataFromURL($url);
-       $filename = realpath(dirname(__FILE__)) . "/data/$fontId.$type";
+       //$filename = realpath(dirname(__FILE__)) . "/data/$fontId.$type";
+       $filename = realpath(dirname(__FILE__)) . "/data/$fontId";
        $fd = fopen($filename,"w");
        if ($fd) {
          fwrite($fd, $data);
