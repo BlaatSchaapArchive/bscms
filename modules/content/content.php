@@ -1,5 +1,5 @@
 <?php
-
+  $found = false;
   $pq = $pdo->prepare("select id, type,title from content where shortname = :shortname");
   $pq->execute(array(":shortname"=>$request[1]));
   $r = $pq->fetchAll();
@@ -17,5 +17,5 @@
       break;
     }
   }
-
+    
 ?>

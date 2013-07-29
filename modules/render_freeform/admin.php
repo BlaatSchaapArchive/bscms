@@ -1,6 +1,34 @@
 <?php
 
 
+function freeform_AdminGetClasses(){
+  global $xmlroot;
+  global $pdo;
+  global $request;
+  try {
+    $xmlroot->addChild("htmlAdminContent","--classes--");
+  } catch (PDOException $e) {
+    global $xmlroot;
+    $error = $e->getMessage ();
+    $xmlroot->addChild("htmlAdminContent", "<div class='error'>DB ERROR: $error</div>");
+  }
+  
+}
+
+function freeform_AdminGetFonts(){
+  global $xmlroot;
+  global $pdo;
+  global $request;
+  try {
+    $xmlroot->addChild("htmlAdminContent","--fonts--");
+  } catch (PDOException $e) {
+    global $xmlroot;
+    $error = $e->getMessage ();
+    $xmlroot->addChild("htmlAdminContent", "<div class='error'>DB ERROR: $error</div>");
+  }
+
+}
+
 function freeform_AdminGetAllThemes() {
   global $xmlroot;
   global $pdo;
@@ -115,7 +143,11 @@ function freeform_AdminAddTheme($name){
     $pq = $pdo->prepare("insert into render_freeform_themes (name) values (:name)");
     $pq->execute(array( ":name"=> $name));
     $themeId =  $pdo->lastInsertId();
-    $pq = $pdo->prepare('insert into render_freeform_blocks (type, name, themeid) values ("main", "main" , :themeid)');
+    $pq = $pdo->prepare('insert into render_freeform_blocks (type, name, themeid) values ("main", "content" , :themeid)');
+    $pq->execute(array( ":themeid"=> $themeId));
+    $pq = $pdo->prepare('insert into render_freeform_blocks (type, name, themeid) values ("main", "title" , :themeid)');
+    $pq->execute(array( ":themeid"=> $themeId));
+    $pq = $pdo->prepare('insert into render_freeform_blocks (type, name, themeid) values ("main", "header" , :themeid)');
     $pq->execute(array( ":themeid"=> $themeId));
     return $themeId;
   } catch (PDOException $e) {

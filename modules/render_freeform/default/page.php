@@ -16,13 +16,15 @@
         echo $htmlContent;
       }
       ?>
-    <div id="title"><?php echo $xmlroot->title;?></div>
-    <div id="content">
-      <?php
-      foreach ( $xmlroot->htmlContent as $htmlContent) {
-        echo $htmlContent;
-      }
-      ?>
+      <div id="container">
+        <div id="title"><?php echo $xmlroot->title;?></div>
+        <div id="content">
+          <?php
+          foreach ( $xmlroot->htmlContent as $htmlContent) {
+            echo $htmlContent;
+          }
+          ?>
+      </div> 
     </div>
   </body>
 </html>

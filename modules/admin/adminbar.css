@@ -16,6 +16,10 @@ html, body {
 }
 
 div#adminbar + div {
-padding-top : 32px;
+  padding-top : 32px;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 

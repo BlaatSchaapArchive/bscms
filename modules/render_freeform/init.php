@@ -23,8 +23,26 @@ $adminpage = array ( "dir"      => $current_plugin ,
 
 array_push($adminpages, $adminpage);
 
+$adminpage = array ( "dir"      => $current_plugin ,
+                     "category" => "render"       ,
+                     "name"     => "freeform",
+                     "item"     => "classes" ,
+                     "filename" => "admin.php"     ,
+                     "function" => "freeform_AdminGetClasses",
+                     "hidden"   => true);
 
+array_push($adminpages, $adminpage);
+/*
+$adminpage = array ( "dir"      => $current_plugin ,
+                     "category" => "render"       ,
+                     "name"     => "freeform",
+                     "item"     => "fonts" ,
+                     "filename" => "admin.php"     ,
+                     "function" => "freeform_AdminGetFonts",
+                     "hidden"   => false);
 
+array_push($adminpages, $adminpage);
+*/
 
 
 

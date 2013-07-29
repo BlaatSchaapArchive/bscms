@@ -62,17 +62,23 @@
   //------------------------------------------------------------------
   // Process commands by plugins 
   //------------------------------------------------------------------
-
+  $processed = false;
   foreach ($plugins as $plugin) {
     if (isset($plugin["command"]))      {
       if ($command == $plugin["command"])    {
         include $plugin['dir'].$plugin['filename'];
         if (isset($plugin["function"])) call_user_func($plugin["function"]);
+        $processed = true;
         break;
       }
     }
   }
 
+
+  if (!$processed) {
+    $xmlroot->addChild("htmlContent","404 NOT FOUND");
+    header("404 NOT FOUND");
+  }
   
   //------------------------------------------------------------------
   // Render                     
